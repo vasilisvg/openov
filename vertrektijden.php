@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="nl">
 <head>
-<meta name="viewport" content="width=device-width,initial-scale=1.0;">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="favicon-194x194.png" sizes="194x194">
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="android-chrome-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="manifest.json">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="mstile-144x144.png">
+<meta name="msapplication-config" content="browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
 <style type="text/css">
 body {
 	padding:.5em 1em;
@@ -99,10 +119,10 @@ $quay1 = htmlspecialchars($_GET["quay1"]);
 $quay2 = htmlspecialchars($_GET["quay2"]);
 // Als je niks invult pakken we halte Oostinje in Den Haag
 if ($quay1 == "") {
-	$quay1 = "32002647";
+	$quay1 = "30000060";
 };
 if ($quay2 == "") {
-	$quay2 = "32002648";
+	$quay2 = "30000059";
 };
 // De lijninformatie wordt binnengehaald met curl
 function ophalen($perron) {
@@ -150,10 +170,10 @@ function toonZe($alleinfo, $richting) {
 		};
 		// Toon alle voertuigen die binnen 3 kwartier komen
 		if($verschil <= 45) {
-			if ($verschil == 0) {
-			echo("<li class=\"telaat\"><span>" .$row[LinePublicNumber] . "</span><h2>" . $row[DestinationName50] . "</h2><strong>NU!</strong></li>");
-			} else if ($verschil == 1) {
-			echo("<li class=\"bijnatelaat\"><span>" .$row[LinePublicNumber] . "</span><h2>" . $row[DestinationName50] . "</h2><strong>1</strong></li>\n");
+			if ($verschil < 5) {
+			echo("<li class=\"telaat\"><span>" .$row[LinePublicNumber] . "</span><h2>" . $row[DestinationName50] . "</h2><strong>" . $verschil . "</strong></li>");
+			} else if ($verschil < 10) {
+			echo("<li class=\"bijnatelaat\"><span>" .$row[LinePublicNumber] . "</span><h2>" . $row[DestinationName50] . "</h2><strong>" . $verschil . "</strong></li>\n");
 			} else {
 				echo("<li><span>" .$row[LinePublicNumber] . "</span><h2>" . $row[DestinationName50] . "</h2><strong>" . $verschil . "</strong></li>\n");
 			};
