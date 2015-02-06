@@ -22,6 +22,10 @@
 <meta name="msapplication-TileImage" content="mstile-144x144.png">
 <meta name="msapplication-config" content="browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Radioweg">
+<meta http-equiv="refresh" content="60">
 <style type="text/css">
 body {
 	padding:.5em 1em;
@@ -111,9 +115,7 @@ li strong {
 // Plak de haltenummers als volgt aan de url(inclusief het vraagteken):?quay1=32002649&quay2=32002650
 // Pompiedom!
 
-if( ! ini_get('date.timezone') ) {
-    date_default_timezone_set('Europe/Amsterdam');
-}
+date_default_timezone_set('Europe/Amsterdam');
 
 $quay1 = htmlspecialchars($_GET["quay1"]);
 $quay2 = htmlspecialchars($_GET["quay2"]);
